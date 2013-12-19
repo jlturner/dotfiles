@@ -202,6 +202,45 @@ With argument ARG, do this that many times."
 
 ; Initialize and configure web mode
 (require 'web-mode)
+
+; Initialize quack (better scheme mode)
+(package-initialize 'quack)
+
+(unless (require 'quack nil 'noerror)
+    (progn
+          (ensure-package-contents-refreshed)
+	      (package-install 'quack)))
+
+; Initialize and configure quack
+(require 'quack)
+
+; Initialize haskell-mode
+(package-initialize 'haskell-mode)
+
+(unless (require 'haskell-mode nil 'noerror)
+    (progn
+          (ensure-package-contents-refreshed)
+	      (package-install 'haskell-mode)))
+
+    (custom-set-variables
+     '(haskell-mode-hook '(turn-on-haskell-indentation)))
+
+
+; Initialize and configure quack
+(require 'haskell-mode)
+
+; Initialize Auto Complete
+(package-initialize 'auto-complete)
+
+(unless (require 'auto-complete nil 'noerror)
+    (progn
+          (ensure-package-contents-refreshed)
+	      (package-install 'auto-complete)))
+
+(require 'auto-complete)
+(require 'auto-complete-config)
+(ac-config-default)
+
 (add-to-list 'auto-mode-alist '("\\.html?\\'" . web-mode))
 (add-to-list 'auto-mode-alist '("\\.phtml\\'" . web-mode))
 (add-to-list 'auto-mode-alist '("\\.tpl\\.php\\'" . web-mode))
@@ -218,3 +257,17 @@ With argument ARG, do this that many times."
 
 (set-face-attribute 'web-mode-html-tag-face nil :foreground "DarkSeaGreen")
 (set-face-attribute 'web-mode-html-attr-name-face nil :foreground "IndianRed")
+
+(custom-set-variables
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(quack-global-menu-p nil)
+ '(quack-programs (quote ("mzscheme" "bigloo" "csi" "csi -hygienic" "gosh" "gracket" "gsi" "gsi ~~/syntax-case.scm -" "guile" "kawa" "mit-scheme" "racket" "racket -il typed/racket" "rs" "scheme" "scheme48" "scsh" "sisc" "stklos" "sxi"))))
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(default ((t (:background "nil")))))
